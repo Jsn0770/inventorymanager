@@ -1,0 +1,235 @@
+.productdisplay {
+    display: flex;
+    margin: 0px 170px;
+}
+
+.productdisplay-left {
+    display: flex;
+    gap: 17px;
+}
+
+.productdisplay-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.productdisplay-img-list img {
+    height: 163px;
+}
+
+.productdisplay-main-img {
+    width: 450px;
+    height: auto;
+}
+
+.productdisplay-right {
+    margin: 0px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.productdisplay-right h1 {
+    color: #3d3d3d;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.productdisplay-right-stars {
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+    gap: 5px;
+    color: #1c1c1c;
+    font-size: 16px;
+}
+
+.productdisplay-right-prices {
+    display: flex;
+    margin: 40px 0px;
+    gap: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.productdisplay-right-price-new {
+    color: #ff4141;
+}
+
+.productdisplay-right-flavor h1 {
+    margin-top: 55px;
+    color: #656565;
+    font-size: 18px;
+}
+
+.productdisplay-right-flavors {
+    display: flex;
+    margin: 30px 0px;
+    gap: 20px; 
+    font-size: 11px;
+}
+
+.productdisplay-right-flavors div {
+    padding: 18px 24px;
+    background: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.productdisplay-right button {
+    padding: 20px 40px;
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: #ff4141;
+    margin-bottom: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.productdisplay-right-category {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.productdisplay-right-category span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.productdisplay-right-description {
+    font-size: 16px;
+}
+
+/* Media queries para dispositivos móveis */
+@media (max-width: 1280px) {
+    .productdisplay {
+        margin: 0px 120px;
+    }
+
+    .productdisplay-main-img {
+        width: 400px;
+    }
+
+    .productdisplay-right {
+        margin: 0px 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .productdisplay {
+        margin: 0px 70px;
+    }
+
+    .productdisplay-main-img {
+        width: 350px;
+    }
+
+    .productdisplay-right {
+        margin: 0px 30px;
+    }
+
+    .productdisplay-right h1 {
+        font-size: 35px;
+    }
+
+    .productdisplay-right-prices {
+        font-size: 20px;
+    }
+
+    .productdisplay-right-description {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    .productdisplay {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productdisplay-left {
+        margin-bottom: 40px;
+    }
+
+    .productdisplay-main-img {
+        width: 100%;
+    }
+
+    .productdisplay-img-list img {
+        height: auto;
+    }
+
+    .productdisplay-right {
+        margin: 0px;
+    }
+
+    .productdisplay-right h1 {
+        font-size: 30px;
+    }
+
+    .productdisplay-right-stars {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .productdisplay-right-prices {
+        margin: 30px 0px;
+        font-size: 18px;
+    }
+
+    .productdisplay-right-flavor h1 {
+        margin-top: 40px;
+        font-size: 16px;
+    }
+
+    .productdisplay-right-flavors {
+        margin: 20px 0px;
+        font-size: 10px;
+    }
+
+    .productdisplay-right-flavors div {
+        padding: 15px 20px;
+        font-size: 9px;
+    }
+
+    .productdisplay-right button {
+        padding: 15px 30px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .productdisplay-right h1 {
+        font-size: 25px;
+    }
+
+    .productdisplay-right-stars {
+        font-size: 12px;
+    }
+
+    .productdisplay-right-prices {
+        font-size: 16px;
+    }
+
+    .productdisplay-right-flavor h1 {
+        font-size: 14px;
+    }
+
+    .productdisplay-right-flavors {
+        font-size: 9px;
+    }
+
+    .productdisplay-right-flavors div {
+        padding: 12px 16px;
+        font-size: 8px;
+    }
+
+    .productdisplay-right button {
+        padding: 12px 24px;
+        font-size: 12px;
+    }
+}
