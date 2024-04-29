@@ -1,12 +1,11 @@
 const port = 4000;
 const express = require("express");
 const app = express();
-const jwt = require("jswebtoken");
-const multer = require("multer");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const Product = require('./schema');
 
 app.use(express.json());
 app.use(cors());
@@ -41,6 +40,43 @@ app.post("/upload", upload.single('product'), (req, res) => {
     })
 
 })
+
+// Schema for Creating Products
+const Product = mongoose.model("Product",{
+    id:{
+        type: Number,
+        required: true,
+    },
+    name:{
+        type: String,
+        required: true,
+    },
+    image:{
+        type: String,
+        required: true,
+    },
+    category:{
+        type: String,
+        required: true,
+    },
+    // new_price:{
+    //     type: Number,
+    //     required: true,
+    // },
+    old_price:{
+        type: Number,
+        required: true,
+    },
+    date:{
+        type: Date,
+        default:Date.now,
+    },
+    avilable:{
+        type: Boolean,
+        default: true,
+    },  
+})
+
 
 app.post('/addproduct', async (req, res) => {
     let products = await Product.find({});
@@ -84,21 +120,9 @@ app.post('/removeproduct', async (req, res) => {
 
 app.get('/allproducts', async (req, res) => {
     let products = await Product.find({});
+    console.log("Todos Produtos Listados");
     res.send(products);
 })
-
-app.get('/products/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const products = await Product.findOne({ id})
-
-        return res.status(200).json(products);
-    } catch (error) {
-        return res.status(500).send('Falha ao buscar produtos')
-    }
-});
-
-// app.use(require('./routes'));
 
 app.listen(port, (error) => {
     if (!error) {

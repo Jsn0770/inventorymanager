@@ -18,14 +18,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Shop />} />
-          <Route path='/hipercalorico' element={<ShopCategory banner={men_banner} category="hipercalorico" />} />
-          <Route path='/pretreino' element={<ShopCategory banner={women_banner} category="pretreino" />} />
-          <Route path='/creatina' element={<ShopCategory banner={kid_banner} category="creatina" />} />
-          <Route path='/whey' element={<ShopCategory banner={kid_banner} category="whey" />} />
-          <Route path='/pastadeamendoim' element={<ShopCategory banner={kid_banner} category="pastadeamendoim" />} />
-          <Route path='/barrinha' element={<ShopCategory banner={kid_banner} category="barrinha" />} />
-          <Route path='/multivitaminico' element={<ShopCategory banner={kid_banner} category="multivitaminico" />} />
-          <Route path='/coqueteleira' element={<ShopCategory banner={kid_banner} category="coqueteleira" />} />
+          <Route path='/timesnacionais' element={<ShopCategory banner={men_banner} category="timesnacionais" />} />
+          <Route path='/timesestrangeiros' element={<ShopCategory banner={women_banner} category="timesestrangeiros" />} />
+          <Route path='/selecao' element={<ShopCategory banner={kid_banner} category="selecao" />} />
+          <Route path='/chuteira' element={<ShopCategory banner={kid_banner} category="chuteira" />} />
           <Route path='/product' element={<Product />}>
             <Route path=':productId' element={<Product />} />
           </Route>

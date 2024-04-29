@@ -17,13 +17,10 @@ export const Navbar = () => {
         </div>
         <ul className="nav-menu">
             <li onClick={()=>{setMenu("shop")}}><Link style={{ textDecoration: 'none'}} to='/'>Loja</Link>{menu==="shop"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("hipercalorico")}}><Link style={{ textDecoration: 'none'}} to='/hipercalorico'>Hipercalorico</Link>{menu==="hipercalorico"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("pretreino")}}><Link style={{ textDecoration: 'none'}} to ='/pretreino'>Pré-Treino</Link>{menu==="pretreino"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("creatina")}}><Link style={{ textDecoration: 'none'}} to ='/creatina'>Creatina</Link>{menu==="creatina"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("pastadeamendoim")}}><Link style={{ textDecoration: 'none'}} to ='/pastadeamendoim'>Pasta de Amendoim</Link>{menu==="whey"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("barrinha")}}><Link style={{ textDecoration: 'none'}} to ='/barrinha'>Barra de Proteina</Link>{menu==="barrinha"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("multivitaminico")}}><Link style={{ textDecoration: 'none'}} to ='/multivitaminico'>Multivitaminico</Link>{menu==="multivitaminico"?<hr/>:<></>}</li>
-            <li onClick={()=>{setMenu("coqueteleira")}}><Link style={{ textDecoration: 'none'}} to ='/coqueteleira'>Coqueteleira e Garrafas</Link>{menu==="coqueteleira"?<hr/>:<></>}</li>
+            <li onClick={()=>{setMenu("timesnacionais")}}><Link style={{ textDecoration: 'none'}} to='/timesnacionais'>Times Nacionais</Link>{menu==="timesnacionais"?<hr/>:<></>}</li>
+            <li onClick={()=>{setMenu("timesestrangeiros")}}><Link style={{ textDecoration: 'none'}} to ='/timesestrangeiros'>Times Estrangeiros</Link>{menu==="timesestrangeiros"?<hr/>:<></>}</li>
+            <li onClick={()=>{setMenu("selecao")}}><Link style={{ textDecoration: 'none'}} to ='/selecao'>Seleções</Link>{menu==="selecao"?<hr/>:<></>}</li>
+            <li onClick={()=>{setMenu("chuteira")}}><Link style={{ textDecoration: 'none'}} to ='/chuteira'>Chuteiras</Link>{menu==="chuteira"?<hr/>:<></>}</li>
         </ul> 
         <div className="nav-login-cart">
             <Link to ='/login'><button>Login</button></Link>
