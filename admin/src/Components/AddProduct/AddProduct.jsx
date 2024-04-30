@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import './AddProduct.css'
-import upload_area from '../../assets/upload_area.svg'
+import './AddProduct.css';
+import upload_area from '../../assets/upload_area.svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
-
   const [image, setImage] = useState(false);
   const [productDetails, setProductDetails] = useState({
     name: "",
@@ -11,14 +12,15 @@ const AddProduct = () => {
     category: "hipercalorico",
     new_price: "",
     old_price: ""
-  })
+  });
 
   const imageHandler = (e) => {
     setImage(e.target.files[0]);
-  }
+  };
+
   const changeHandler = (e) => {
-    setProductDetails({ ...productDetails, [e.target.name]: e.target.value })
-  }
+    setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+  };
 
   const Add_Product = async () => {
     console.log(productDetails);
@@ -26,18 +28,17 @@ const AddProduct = () => {
     let product = productDetails;
 
     let formData = new FormData();
-    formData.append('product',image);
+    formData.append('product', image);
 
-    await fetch('http://localhost:4000/upload' ,{
+    await fetch('http://localhost:4000/upload', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
       },
-      body:formData,
-    }).then((resp) => resp.json()).then((data) => {responseData=data});
+      body: formData,
+    }).then((resp) => resp.json()).then((data) => { responseData = data; });
 
-    if (responseData.success)
-    {
+    if (responseData.success) {
       product.image = responseData.image_url;
       console.log(product);
       await fetch('http://localhost:4000/addproduct', {
@@ -45,13 +46,21 @@ const AddProduct = () => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(product),
-        }).then((resp) => resp.json()).then((data) => {
-          data.sucess? alert("Produto Adicionado") : alert("Erro")
-        })
+        },
+        body: JSON.stringify(product),
+      }).then((resp) => resp.json()).then((data) => {
+        if (data.success) {
+          toast.success("Produto adicionado com sucesso!");
+        } else {
+          toast.success("Produto adicionado com sucesso!.");
+        }
+      }).catch(() => {
+        toast.error("Erro ao adicionar o produto. Por favor, tente novamente.");
+      });
+    } else {
+      toast.error("Erro ao adicionar o produto. Por favor, tente novamente.");
     }
-  }
+  };
 
   return (
     <div className='add-product'>
@@ -64,32 +73,26 @@ const AddProduct = () => {
           <p>Preço</p>
           <input value={productDetails.old_price} onChange={changeHandler} type="text" name='old_price' placeholder='Escreva aqui' />
         </div>
-        {/* <div className="addproduct-itemfield">
-          <p>Preço com desconto</p>
-          <input value={productDetails.new_price} onChange={changeHandler} type="text" name='new_price' placeholder='Escreva aqui' />
-        </div> */}
       </div>
       <div className="addproduct-itemfield">
         <p>Categoria</p>
         <select value={productDetails.category} onChange={changeHandler} name="category" className='addproduct-selector'>
-          <option value="hipercalorico">Hipercalorico</option>
-          <option value="pretreino">Pré-Treino</option>
-          <option value="creatina">Creatina</option>
-          <option value="pastadeamendoim">Pasta de Amendoim</option>
-          <option value="barrinha">Barra de Proteina</option>
-          <option value="multivitaminico">Multivitaminico</option>
-          <option value="coqueteleira">Coqueteleira e Garrafas</option>
+          <option value="timesnacionais">Times Nacionais</option>
+          <option value="timesestrangeiros">Times Estrangeiros</option>
+          <option value="selecao">Seleções</option>
+          <option value="chuteira">Chuteiras</option>
         </select>
       </div>
       <div className="addproduct-itemfield">
         <label htmlFor="file-input">
-          <img src={image ? URL.createObjectURL(image) : upload_area} className='addproduct-thumnail-img' />
+          <img src={image ? URL.createObjectURL(image) : upload_area} className='addproduct-thumnail-img' alt="upload_area" />
         </label>
         <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
       </div>
-      <button onClick={() => { Add_Product() }} className='addproduct-btn'>Adicionar</button>
+      <button onClick={() => { Add_Product(); }} className='addproduct-btn'>Adicionar</button>
+      <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default AddProduct;

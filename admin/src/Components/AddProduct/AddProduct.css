@@ -63,6 +63,10 @@
     font-weight: 500;
 }
 
+.Toastify__toast--success {
+    font-family: "Poppins";
+}
+
 @media(max-width:800px){
     .add-product {
         width: auto;
