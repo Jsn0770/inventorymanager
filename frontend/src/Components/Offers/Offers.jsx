@@ -1,6 +1,6 @@
 import React from 'react'
 import './Offers.css'
-import exclusive_image from '../Assets/whey_100 _max.png'
+// import exclusive_image from '../Assets/whey_100 _max.png'
 
 export const Offers = () => {
   return (
@@ -11,9 +11,9 @@ export const Offers = () => {
         <p>UM DE NOSSOS MELHORES PRODUTOS</p>
         <button>Veja Agora</button>
       </div>
-      <div className="offers-right">
+      {/* <div className="offers-right">
         <img src={exclusive_image} alt="" />
-      </div>
+      </div> */}
     </div>
   )
   

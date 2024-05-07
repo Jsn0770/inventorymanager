@@ -28,6 +28,11 @@
     row-gap: 80px;
 }
 
+.shopcategory-products img {
+    width: 250px;
+    height: auto;
+}
+
 .shopcategory-loadmore {
     display: flex;
     justify-content: center;

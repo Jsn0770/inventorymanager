@@ -23,9 +23,9 @@ const CartItems = () => {
           <div className="cartitems-format cartitems-format-main">
             <img src={e.image} alt="" className='carticon-product-icon' />
             <p>{e.name}</p>
-            <p>R${e.new_price.toFixed(2).replace('.', ',')}</p>
+            <p>R${e.new_price}</p>
             <button className ='cartitems-quantity'>{cartItems[e.id]}</button>
-            <p>R${(e.new_price * cartItems[e.id]).toFixed(2).replace('.', ',')}</p>
+            <p>R${(e.new_price * cartItems[e.id])}</p>
             <img className='cartitems-remove-icon' src={remove_icon} onClick={()=>{removeFromCart(e.id)}} alt="" />
           </div>
           <hr />

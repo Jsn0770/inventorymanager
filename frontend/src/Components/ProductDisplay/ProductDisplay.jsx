@@ -34,7 +34,7 @@ export const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">
-          <div className="productdisplay-right-price-new">R${product.new_price.toFixed(2)}
+          <div className="productdisplay-right-price-new">R${product.new_price}
             </div>
             <div className="productdisplay-right-description">
             AVISO: Todos os servidores multijogador para NBA 2K22 serão desligados em 31/12/2023. Após esta data, todas as funções do jogo que necessitam dos servidores online não funcionarão mais.
