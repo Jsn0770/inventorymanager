@@ -37,21 +37,20 @@ export const ProductDisplay = (props) => {
           <div className="productdisplay-right-price-new">R${product.new_price}
             </div>
             <div className="productdisplay-right-description">
-            AVISO: Todos os servidores multijogador para NBA 2K22 serão desligados em 31/12/2023. Após esta data, todas as funções do jogo que necessitam dos servidores online não funcionarão mais.
+            AVISO: TESTE TESTE TESTE TESTE TESTE TESTE TESTE
             </div>
             <div className="productdisplay-right-flavor">
-              <h1>Selecione o Sabor</h1>
+              <h1>Selecione o Tamanho</h1>
               <div className="productdisplay-right-flavors">
-                <div>Morango</div>
-                <div>Chocolate</div>
-                <div>Baunilha</div>
-                <div>Cookies</div>
-                <div>Doce de Leite</div>
+                <div>P</div>
+                <div>M</div>
+                <div>G</div>
+                <div>GG</div>
               </div>
             </div>
             <button onClick={()=>{addToCart(product.id)}}>ADICIONE AO CARRINHO</button>
-            <p className='productdisplay-right-category'><span>Categoria:</span>Whey, Whey 100%, Integral Medica</p>
-            <p className='productdisplay-right-category'><span>Tags:</span>Fitness, Latest</p>
+            <p className='productdisplay-right-category'><span>Categoria:</span>Camisa, Futebol, Esporte, Real Madrid</p>
+            <p className='productdisplay-right-category'><span>Tags:</span>Modern, Latest</p>
           </div>
         </div>
       </div>
