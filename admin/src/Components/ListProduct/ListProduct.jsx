@@ -11,7 +11,8 @@ const ListProduct = () => {
   const [editProductDetails, setEditProductDetails] = useState({
     name: '',
     new_price: '',
-    category: ''
+    category: '',
+    quantity: '' // Adicionado o campo quantidade
   });
 
   const fetchInfo = async () => {
@@ -49,7 +50,7 @@ const ListProduct = () => {
   }
 
   const fetchProductDetails = async (id) => {
-    await fetch(`http://localhost:4000/productdetails/${id}`)
+    await fetch(http://localhost:4000/productdetails/${id})
       .then((res) => res.json())
       .then((data) => { setEditProductDetails(data) });
   }
@@ -88,6 +89,7 @@ const ListProduct = () => {
             <th>Nome</th>
             <th>Preço</th>
             <th>Categoria</th>
+            <th>Quantidade</th> {/* Nova coluna para quantidade */}
             <th>Remover</th>
             <th>Editar</th>
           </tr>
@@ -99,6 +101,7 @@ const ListProduct = () => {
               <td>{product.name}</td>
               <td>R${product.new_price}</td>
               <td>{product.category}</td>
+              <td>{product.quantity}</td> {/* Exibindo a quantidade */}
               <td><Button variant="danger" onClick={() => handleRemoveClick(product.id)}><img src={cross_icon} alt="" style={{ width: '20px' }} /></Button></td>
               <td><Button variant="primary" onClick={() => handleEditClick(product.id)}>Editar</Button></td>
             </tr>
@@ -124,6 +127,10 @@ const ListProduct = () => {
               <Form.Group controlId="formCategory">
                 <Form.Label>Categoria</Form.Label>
                 <Form.Control type="text" name="category" value={editProductDetails.category} onChange={handleInputChange} />
+              </Form.Group>
+              <Form.Group controlId="formQuantity">
+                <Form.Label>Quantidade</Form.Label>
+                <Form.Control type="number" name="quantity" value={editProductDetails.quantity} onChange={handleInputChange} /> {/* Novo campo para quantidade */}
               </Form.Group>
             </Form>
           ) : (
