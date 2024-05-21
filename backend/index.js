@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 const storage = multer.diskStorage({
     destination: './upload/images',
     filename: (req, file, cb) => {
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+        return cb(null, ${file.fieldname}_${Date.now()}${path.extname(file.originalname)})
     }
 })
 
@@ -36,7 +36,7 @@ app.use('/images', express.static('upload/images'))
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
+        image_url: http://localhost:${port}/images/${req.file.filename}
     })
 
 })
@@ -63,10 +63,11 @@ const Product = mongoose.model("Product",{
         type: Number,
         required: true,
     },
-    // old_price:{
-    //     type: Number,
-    //     required: true,
-    // },
+    quantity:{  // Novo campo adicionado
+        type: Number,
+        required: true,
+        default: 1, // Definindo um valor padrão
+    },
     date:{
         type: Date,
         default:Date.now,
@@ -77,7 +78,6 @@ const Product = mongoose.model("Product",{
     },  
 })
 
-
 app.post('/addproduct', async (req, res) => {
     let products = await Product.find({});
     let id;
@@ -85,8 +85,7 @@ app.post('/addproduct', async (req, res) => {
         let last_product_array = products.slice(-1);
         let last_product = last_product_array[0];
         id = last_product.id + 1;
-    }
-    else {
+    } else {
         id = 1;
     }
     const product = new Product({
@@ -96,13 +95,14 @@ app.post('/addproduct', async (req, res) => {
         category: req.body.category,
         new_price: req.body.new_price,
         old_price: req.body.old_price,
+        quantity: req.body.quantity // Adicionando quantidade na criação de produto
     });
     console.log(product);
     await product.save();
     res.json({
-        sucess: true,
+        success: true,
         name: req.body.name,
-    })
+    });
 })
 
 // Creating API for deleting Products
@@ -110,7 +110,7 @@ app.post('/addproduct', async (req, res) => {
 app.post('/removeproduct', async (req, res) => {
     await Product.findOneAndDelete({ id: req.body.id });
     res.json({
-        sucess: true,
+        success: true,
         name: req.body.name,
     })
 
@@ -122,6 +122,22 @@ app.get('/allproducts', async (req, res) => {
     let products = await Product.find({});
     console.log("Todos Produtos Listados");
     res.send(products);
+})
+
+// Creating API for updating Products
+
+app.post('/updateproduct', async (req, res) => {
+    await Product.findOneAndUpdate({ id: req.body.id }, {
+        name: req.body.name,
+        image: req.body.image,
+        category: req.body.category,
+        new_price: req.body.new_price,
+        quantity: req.body.quantity // Atualizando a quantidade
+    });
+    res.json({
+        success: true,
+        name: req.body.name,
+    });
 })
 
 // Schema creating for User model
