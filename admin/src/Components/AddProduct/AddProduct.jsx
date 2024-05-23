@@ -10,8 +10,8 @@ const AddProduct = () => {
     name: "",
     image: "",
     category: "timesnacionais",
-    new_price: ""
-    // old_price: ""
+    new_price: "",
+    quantity: "" // Adicionado o campo quantidade
   });
 
   const imageHandler = (e) => {
@@ -73,6 +73,10 @@ const AddProduct = () => {
           <p>Preço</p>
           <input value={productDetails.new_price} onChange={changeHandler} type="text" name='new_price' placeholder='Escreva aqui' />
         </div>
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Quantidade</p> {/* Novo campo de quantidade */}
+        <input value={productDetails.quantity} onChange={changeHandler} type="number" name='quantity' placeholder='Escreva aqui' />
       </div>
       <div className="addproduct-itemfield">
         <p>Categoria</p>
