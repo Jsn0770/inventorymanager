@@ -50,7 +50,7 @@ const ListProduct = () => {
   }
 
   const fetchProductDetails = async (id) => {
-    await fetch(http://localhost:4000/productdetails/${id})
+    await fetch('http://localhost:4000/productdetails/${id}')
       .then((res) => res.json())
       .then((data) => { setEditProductDetails(data) });
   }
