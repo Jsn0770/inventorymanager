@@ -1,4 +1,3 @@
-// database.js
 const mongoose = require("mongoose");
 
 class Database {
@@ -10,8 +9,6 @@ class Database {
         mongoose.connect(this.uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useCreateIndex: true,
-            useFindAndModify: false
         }).then(() => {
             console.log("Conectado ao MongoDB");
         }).catch(err => {
@@ -20,4 +17,4 @@ class Database {
     }
 }
 
-module.exports = Database;
+module.exports = Database;

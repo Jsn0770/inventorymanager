@@ -14,7 +14,7 @@ class ProductController {
         this.storage = multer.diskStorage({
             destination: './upload/images',
             filename: (req, file, cb) => {
-                return cb(null, ${file.fieldname}_${Date.now()}${path.extname(file.originalname)})
+                return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
             }
         });
 
@@ -35,7 +35,7 @@ class ProductController {
         }
         res.json({
             success: 1,
-            image_url: http://localhost:4000/images/${req.file.filename}
+            image_url: `http://localhost:4000/images/${req.file.filename}`
         });
     }
 

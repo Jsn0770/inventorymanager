@@ -16,44 +16,56 @@ const ListProduct = () => {
   });
 
   const fetchInfo = async () => {
-    await fetch('http://localhost:4000/allproducts')
-      .then((res) => res.json())
-      .then((data) => { setAllProducts(data) });
-  }
+    try {
+      const res = await fetch('http://localhost:4000/products/allproducts');
+      const data = await res.json();
+      setAllProducts(data);
+    } catch (error) {
+      console.error("Erro ao buscar produtos:", error);
+    }
+  };
 
   useEffect(() => {
     fetchInfo();
   }, []);
 
   const remove_product = async (id) => {
-    await fetch('http://localhost:4000/removeproduct', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id: id })
-    });
-    setShowModal(false);
-    fetchInfo();
-  }
+    try {
+      await fetch('http://localhost:4000/products/removeproduct', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: id })
+      });
+      setShowModal(false);
+      fetchInfo();
+    } catch (error) {
+      console.error("Erro ao remover produto:", error);
+    }
+  };
 
   const handleRemoveClick = (id) => {
     setProductIdToRemove(id);
     setShowModal(true);
-  }
+  };
 
   const handleEditClick = (id) => {
     setProductIdToEdit(id);
     fetchProductDetails(id);
     setShowModal(true);
-  }
+  };
 
   const fetchProductDetails = async (id) => {
-    await fetch('http://localhost:4000/productdetails/${id}')
-      .then((res) => res.json())
-      .then((data) => { setEditProductDetails(data) });
-  }
+    try {
+      const res = await fetch(`http://localhost:4000/products/details/${id}`);
+      const data = await res.json();
+      setEditProductDetails(data);
+    } catch (error) {
+      console.error("Erro ao buscar detalhes do produto:", error);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,23 +73,27 @@ const ListProduct = () => {
       ...prevState,
       [name]: value
     }));
-  }
+  };
 
   const update_product = async () => {
-    await fetch('http://localhost:4000/updateproduct', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: productIdToEdit,
-        ...editProductDetails
-      })
-    });
-    setShowModal(false);
-    fetchInfo();
-  }
+    try {
+      await fetch('http://localhost:4000/products/updateproduct', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: productIdToEdit,
+          ...editProductDetails
+        })
+      });
+      setShowModal(false);
+      fetchInfo();
+    } catch (error) {
+      console.error("Erro ao atualizar produto:", error);
+    }
+  };
 
   return (
     <Container>
