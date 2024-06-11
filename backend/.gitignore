@@ -1,5 +1,0 @@
-# Ignorar diretório node_modules
-node_modules/
-
-# Ignorar arquivos de dependências do npm
-package-lock.json
