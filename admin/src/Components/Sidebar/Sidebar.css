@@ -21,6 +21,10 @@
     cursor: pointer;
 }
 
+.sidebar-item img {
+    width: 45px;
+}
+
 .sidebar-item p {
     font-size: 19px;
 }
