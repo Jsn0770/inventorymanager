@@ -1,6 +1,6 @@
 const express = require("express");
 const Server = require("./Server");
-const Database = require(".database");
+const Database = require("./database");
 const ProductController = require("./controllers/productcontroller");
 const UserController = require("./controllers/usercontroller");
 
