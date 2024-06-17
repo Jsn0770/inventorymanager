@@ -42,9 +42,9 @@ E pra finalizar, vai para a pasta frontend, abra um terminal (Ctrl+") e escreva 
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 *[Alefe Vinicius](https://github.com/Jsn0770)
-*[Thiago](https://github.com/ThiagoLSV)
+*[Thiago da Silva Fernandes](https://github.com/ThiagoLSV)
 *[Felipe Vilasboas](https://github.com/FelipeVilas)
 *[Gustavo Alves](https://github.com/GustaLVS)
-*[Vanderson](https://github.com/VanGogh201)
+*[Vanderson Santos Ferreira](https://github.com/VanGogh201)
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/Jsn0770/inventorymanager/graphs/contributors) que participaram deste projeto.
