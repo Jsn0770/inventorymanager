@@ -17,7 +17,7 @@ class Server {
         const storage = multer.diskStorage({
             destination: './upload/images',
             filename: (req, file, cb) => {
-                cb(null, ${file.fieldname}_${Date.now()}${path.extname(file.originalname)});
+                cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
             }
         });
         return multer({ storage: storage });
@@ -38,7 +38,7 @@ class Server {
         this.app.post("/upload", this.upload.single('product'), (req, res) => {
             res.json({
                 success: 1,
-                image_url: http://localhost:${this.port}/images/${req.file.filename}
+                image_url: `http://localhost:${this.port}/images/${req.file.filename}`
             });
         });
 
@@ -119,4 +119,4 @@ class Server {
     }
 }
 
-module.exports = Server;
+module.exports = Server;
