@@ -1,6 +1,8 @@
 # Inventory Manager
 
-Esse projeto é um sistema básico de crud para um ECOMMERCE, com um crud para produtos e um mini-crud para usuários. É um projeto completo, Frontend e Backend já feito.
+O objetivo do projeto é fornecer um backend e frontend funcional para um sistema de e-commerce, onde administradores podem gerenciar produtos e clientes podem se registrar, fazer login e ver os produtos disponíveis. O projeto é uma base sólida que pode ser expandida com mais funcionalidades, como um sistema de carrinho de compras e pagamento.
+
+Esta aplicação serve como um ponto de partida para um sistema de e-commerce completo, fornecendo as operações básicas de gestão de usuários e produtos, além de manuseio de imagens e autenticação.
 
 ## 🚀 Começando
 
