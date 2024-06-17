@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 
 class Server {
-    constructor(app, port, database, productController, userController) {
+    constructor(app, port, database, productController, userController, Users) {
         this.app = app;
         this.port = port;
         this.database = database;
@@ -102,15 +102,70 @@ class Server {
         });
 
         this.app.post('/addtocart', async (req, res) => {
-            // Implementar a lógica de adicionar ao carrinho
+            try {
+                const userId = req.user.id; 
+                const itemId = req.body.itemId; 
+    
+                let user = await this.Users.findByPk(userId);
+    
+                if (!user) {
+                    return res.status(404).send("Usuário não encontrado");
+                }
+    
+                let cartData = user.cartData || {};
+    
+                cartData[itemId] = (cartData[itemId] || 0) + 1;
+    
+                await user.update({ cartData });
+    
+                res.send("Item adicionado ao carrinho com sucesso");
+            } catch (error) {
+                console.error("Erro ao adicionar ao carrinho:", error);
+                res.status(500).send("Erro ao adicionar ao carrinho");
+            }
         });
 
         this.app.post('/removefromcart', async (req, res) => {
-            // Implementar a lógica de remover do carrinho
+            try {
+                const userId = req.user.id; 
+                const itemId = req.body.itemId;
+    
+                let user = await this.Users.findByPk(userId);
+    
+                if (!user) {
+                    return res.status(404).send("Usuário não encontrado");
+                }
+    
+                let cartData = user.cartData || {};
+    
+                if (cartData[itemId] && cartData[itemId] > 0) {
+                    cartData[itemId] -= 1;
+                }
+    
+                await user.update({ cartData });
+    
+                res.send("Item removido do carrinho com sucesso");
+            } catch (error) {
+                console.error("Erro ao remover do carrinho:", error);
+                res.status(500).send("Erro ao remover do carrinho");
+            }
         });
 
         this.app.post('/getcart', async (req, res) => {
-            // Implementar a lógica de obter dados do carrinho
+            try {
+                const userId = req.user.id;
+    
+                let user = await this.Users.findByPk(userId);
+    
+                if (!user) {
+                    return res.status(404).send("Usuário não encontrado");
+                }
+    
+                res.json(user.cartData || {});
+            } catch (error) {
+                console.error("Erro ao obter dados do carrinho:", error);
+                res.status(500).send("Erro ao obter dados do carrinho");
+            }
         });
 
         this.app.listen(this.port, () => {
